@@ -1,6 +1,10 @@
+const express = require('express')();
 if (!process.env.HEROKU) {
   require('dotenv').config();
 }
+
+express.get('/', (req, res) => res.send('Hello from Chochi!');
+express.listen(process.env.PORT || 8000, () => 'Chochi is listening...');
 
 const { Telegraf } = require('telegraf');
 const bot = new Telegraf(process.env.TELEGRAM_TOKEN);
