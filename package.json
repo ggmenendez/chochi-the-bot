@@ -12,6 +12,6 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "node-fetch": "^2.6.0",
-    "slimbot": "^4.9.0"
+    "telegraf": "^3.38.0"
   }
 }

@@ -1,19 +1,20 @@
-require('dotenv').config()
+if (!process.env.HEROKU) {
+  require('dotenv').config();
+}
 
-const Slimbot = require('slimbot');
-const slimbot = new Slimbot(process.env.TELEGRAM_TOKEN);
+const { Telegraf } = require('telegraf');
+const bot = new Telegraf(process.env.TELEGRAM_TOKEN);
+
 const { getSputnikCapacity } = require('./modules');
 
-
-// Register listeners
-
-slimbot.on('message', async (message) => {
+bot.start(ctx => ctx.reply('Holiiiii'));
+bot.hears('hi', async (ctx) => {
+  console.log(ctx.message.chat.id);
   const { People, Capacity } = await getSputnikCapacity();
   const percent = Math.floor(People/Capacity*100);
-  slimbot.sendMessage(message.chat.id, `Chochi dice que en Sputnik ahora hay ${People} de ${Capacity} asquerosas personas (${percent}%)`);
+  const message = `Chochi dice que en Sputnik ahora hay ${People} de ${Capacity} asquerosas personas (${percent}%)`;
+  ctx.reply(message);
 });
 
-// Call API
-
-slimbot.startPolling();
+bot.launch();
 
