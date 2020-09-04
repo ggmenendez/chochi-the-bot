@@ -1,15 +1,12 @@
-const express = require('express')();
 if (!process.env.HEROKU) {
   require('dotenv').config();
 }
-
-express.get('/', (req, res) => res.send('Hello from Chochi!'));
-express.listen(process.env.PORT || 8000, () => 'Chochi is listening...');
-
 const { Telegraf } = require('telegraf');
-const bot = new Telegraf(process.env.TELEGRAM_TOKEN);
+const express = require('express')();
 
 const { getSputnikCapacity } = require('./modules');
+
+const bot = new Telegraf(process.env.TELEGRAM_TOKEN);
 
 bot.start(ctx => ctx.reply('Holiiiii'));
 bot.hears('hi', async (ctx) => {
@@ -20,5 +17,9 @@ bot.hears('hi', async (ctx) => {
   ctx.reply(message);
 });
 
-bot.launch();
+express.use(bot.webhookCallback('/chochipath'));
+bot.telegram.setWebhook('https://chochi-the-bot.herokuapp.com/chochipath');
 
+express.get('/', (req, res) => res.send('Qué miras?'));
+
+express.listen(process.env.PORT || 8000, () => console.log('Chochi al habla... Vamos que no tengo todo el día'));
