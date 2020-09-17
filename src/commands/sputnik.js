@@ -1,4 +1,4 @@
-const getSputnikCapacity = require('../modules/sputnikcc');
+const { capacity: getSputnikCapacity } = require('../modules/sputnikcc');
 
 const getChochiMessage = (people, capacity) => {
   const percent = Math.floor(people/capacity*100);
@@ -13,7 +13,6 @@ module.exports = {
   name: 'sputnik',
   handler: async (ctx) => {
     try {
-      console.log(ctx.message.chat.id);
       const { People, Capacity } = await getSputnikCapacity();
       ctx.reply(getChochiMessage(People, Capacity));
     } catch (e) {
