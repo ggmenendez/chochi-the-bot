@@ -1,5 +1,5 @@
 const { capacity: getSputnikCapacity } = require('../modules/sputnikcc');
-
+const getChochiMessage = require('../modules/chochisays');
 
 module.exports = {
   name: 'sputnik',
