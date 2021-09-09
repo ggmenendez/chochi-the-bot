@@ -1,5 +1,5 @@
 const { C, E } = require('../common');
-const { logger } = require('../../providers');
+const { logger } = require('../providers');
 const { accessCheck: checkSputnikAccesses } = require('../modules/sputnikcc');
 const { getCredentials } = require('../modules/credentials');
 const { getAccessSentence } = require('../modules/chochisays');

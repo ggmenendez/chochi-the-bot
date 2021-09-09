@@ -1,4 +1,4 @@
-const { logger } = require('../../providers');
+const { logger } = require('../providers');
 const { capacity: getSputnikCapacity } = require('../modules/sputnikcc');
 const { getCapacitySentence } = require('../modules/chochisays');
 

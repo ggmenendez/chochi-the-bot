@@ -1,4 +1,4 @@
-const { logger } = require('../../providers');
+const { logger } = require('../providers');
 const { capacity: getSharmaCapacity } = require('../modules/sharma');
 const { getCapacitySentence } = require('../modules/chochisays');
 
