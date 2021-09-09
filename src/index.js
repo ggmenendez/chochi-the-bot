@@ -11,7 +11,6 @@ const {
 } = process.env;
 
 module.exports = () => {
-  console.log(URL);
   const app = express();
   const bot = new Telegraf(TELEGRAM_TOKEN);
 
@@ -23,7 +22,7 @@ module.exports = () => {
     bot.telegram.setWebhook(`${URL}/${WEBHOOK_PATH}`)
       .then(() => console.log('Ya me han cazao con el gancho de red, lo que hay que ver'));
 
-    app.get('/', (req, res) => res.send('¿Qué miras?'));
+    app.get('/', (_, res) => res.send('¿Qué miras?'));
 
     app.listen(process.env.PORT || 8000, () => console.log('Chochi al habla... Vamos que no tengo todo el día'));
   } else {
