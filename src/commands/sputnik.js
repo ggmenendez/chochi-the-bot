@@ -1,3 +1,4 @@
+const { logger } = require('../../providers');
 const { capacity: getSputnikCapacity } = require('../modules/sputnikcc');
 const { getCapacitySentence } = require('../modules/chochisays');
 
@@ -8,8 +9,8 @@ module.exports = {
       const { People, Capacity } = await getSputnikCapacity();
       ctx.reply(getCapacitySentence(People, Capacity));
     } catch (e) {
-      console.error(e);
       if (typeof e === 'string') ctx.reply(e);
+      else logger.error(e);
     }
   },
 };

@@ -72,7 +72,6 @@ module.exports = ({ user, password }) => new Promise(async (resolve, reject) => 
     const result = await parseAccountPage(page);
     resolve(result);
   } catch (e) {
-    console.error(e);
     reject(e);
   } finally {
     browser.close()
