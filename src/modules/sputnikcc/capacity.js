@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const { E } = require('../../common');
 
 module.exports = () => new Promise((resolve, reject) => {
   const hours = (new Date()).getHours();
@@ -10,5 +11,5 @@ module.exports = () => new Promise((resolve, reject) => {
     }).then(response => response.json())
       .then(resolve)
       .catch(reject);
-  } else reject('Oye que no son horas de preguntarme nada. ¡A dormir!');
+  } else reject(E.RESPONSES.SLEEP_TIME);
 });
