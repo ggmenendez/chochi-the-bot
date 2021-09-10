@@ -1,4 +1,4 @@
-const { E } = require('../../common');
+const { E } = require('../../../../common');
 const environment = process.env;
 
 const getCredentials = (userId) => {
@@ -6,6 +6,4 @@ const getCredentials = (userId) => {
   throw new Error(E.USER_NOT_FOUND);
 };
 
-module.exports = {
-  getCredentials,
-};
+module.exports = getCredentials;

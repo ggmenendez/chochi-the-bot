@@ -16,8 +16,6 @@ module.exports = () => {
   const app = express();
   const bot = new Telegraf(TELEGRAM_TOKEN);
 
-  console.log(middleware);
-
   bot.use(middleware.requestLogger);
 
   Object.values(commands).forEach(command => bot.command(command.name, command.handler));

@@ -1,1 +1,5 @@
-export { default as auth } from './auth';
+const getCredentials = require('./credentials');
+
+module.exports = {
+  getCredentials,
+};
