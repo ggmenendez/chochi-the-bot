@@ -25,6 +25,7 @@ module.exports = () => {
     app.use(bot.webhookCallback(`/${WEBHOOK_PATH}`));
     bot.telegram.setWebhook(`${URL}/${WEBHOOK_PATH}`)
       .then(() => logger.info('Ya me han cazao con el gancho de red, lo que hay que ver'));
+    bot.startWebhook(`${WEBHOOK_PATH}`, null, 5000)
 
     app.get('/', (_, res) => res.send('¿Qué miras?'));
 
