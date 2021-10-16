@@ -6,4 +6,14 @@ module.exports = {
     USER: '#user',
   },
   WHITESPACE: ' ',
+  SPUTNIK: {
+    ALCOBENDAS: {
+      id: 121,
+      name: 'Alcobendas',
+    },
+    LAS_ROZAS: {
+      id: 191,
+      name: 'Las Rozas',
+    },
+  },
 };

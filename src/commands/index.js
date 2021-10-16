@@ -1,9 +1,11 @@
 const sharma = require('./sharma');
-const sputnik = require('./sputnik');
 const sputnikAccess = require('./sputnik-access');
+const sputnikAlcob = require('./sputnik-alcob');
+const sputnikRozas = require('./sputnik-rozas');
 
 module.exports = {
   sharma,
-  sputnik,
   sputnikAccess,
+  sputnikAlcob,
+  sputnikRozas,
 };
