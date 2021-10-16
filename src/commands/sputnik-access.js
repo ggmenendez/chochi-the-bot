@@ -7,7 +7,7 @@ const {
 const { getAccessSentence } = require('../modules/chochisays');
 
 module.exports = {
-  name: 'sputnikAccess',
+  name: 'sputnikaccess',
   handler: async (ctx) => {
     try {
       const userId = ctx.message.from.id;
