@@ -1,12 +1,12 @@
 const fetch = require('node-fetch');
 const { E } = require('../../common');
 
-module.exports = () => new Promise((resolve, reject) => {
+module.exports = (gymId) => new Promise((resolve, reject) => {
   const hours = (new Date()).getHours();
   if (hours > 7 && hours < 22) {
     fetch("https://clientes.sputnikclimbing.com/ScheduleV2/GetPeopleInTheGym", {
       "headers": { "Content-Type": "application/json" },
-      "body": '{"Namespace":"sputnik","GymID":121}',
+      "body": { "Namespace": "sputnik", "GymID": gymId },
       "method": "POST",
     }).then(response => response.json())
       .then(resolve)
