@@ -6,7 +6,7 @@ const { getCapacitySentence } = require('../modules/chochisays');
 const { ALCOBENDAS } = C.SPUTNIK;
 
 module.exports = {
-  name: 'sputnikAlcob',
+  name: 'sputnikalcob',
   handler: async (ctx) => {
     try {
       const { People, Capacity } = await getSputnikCapacity(ALCOBENDAS.id);
