@@ -3,7 +3,7 @@ const { C } = require('../common');
 const { capacity: getSputnikCapacity } = require('../modules/sputnikcc');
 const { getCapacitySentence } = require('../modules/chochisays');
 
-const { ALCOBENDAS } = C.SPUTNIK_IDS;
+const { ALCOBENDAS } = C.SPUTNIK;
 
 module.exports = {
   name: 'sputnikAlcob',
