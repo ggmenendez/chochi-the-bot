@@ -20,6 +20,7 @@ const MEMBERSHIPS_BOX = 'div.membership-box[ng-repeat="mem in Services | filter:
 const CURRENT_MEMBERSHIP = 'current';
 
 const MEMBERSHIP_REGEX = /((.*)\s(abono trimestral)|(bono 10 entradas)).*de : (\d{2}\/\d{2}\/\d{4}).*para : (\d{2}\/\d{2}\/\d{4})\s(current)?.*visitas (ilimitadas|restantes?(\d{0,2}))/i;
+const NO_MEMBERSHIP_RESULT = [{}];
 
 const parseMembership = (membership) => {
   const membershipWithSpaces = membership.replace(LINE_BREAKS, WHITESPACE);
@@ -47,10 +48,11 @@ const parseAccountPage = async (page) => {
   try {
     await page.waitForSelector(MEMBERSHIPS_BOX, { timeout: MEMBERSHIP_TIMEOUT });
     const memberships = await page.$$eval(MEMBERSHIPS_BOX, memberships => memberships.map(el => el.innerText));
-    if (memberships.length) return parseMembership(memberships[0]);
+    if (memberships.length) return memberships.map(parseMembership);
+    else return NO_MEMBERSHIP_RESULT;
   } catch (e) {
-    if (e.name === 'TimeoutError') return {};
-    else logger.error(e);
+    logger.error(e);
+    if (e.name === 'TimeoutError') return NO_MEMBERSHIP_RESULT; // @TODO implement retry model
   }
 };
 
